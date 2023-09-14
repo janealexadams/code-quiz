@@ -1,0 +1,46 @@
+/* This stying is being applied to the whole webpage.  */
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+.title {
+  font-weight: 900;
+}
+
+header { 
+  padding: 20px;
+}
+
+#high-score {
+  float: left;
+  list-style-type: none;
+  text-decoration: none;
+  color: #293b85;
+}
+
+#time {
+  float: right;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.row {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding-top: 150px;
+}
+
+#start-quiz-button {
+  padding: 10px;
+  margin: 24px;
+  cursor: pointer;
+  background-color: #293b85;
+  color: white;
+  font-weight: 900;
+}
+  
