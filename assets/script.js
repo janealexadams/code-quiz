@@ -1,3 +1,17 @@
+// Function to make quiz description dissapear when clicking on "start" button.
+function toggle () {
+  var x = document.getElementById("div1");
+
+  if(x.style.display === "none") {
+    x.style.display - "block";
+  }
+
+  else {
+    x.style.display = "none";
+  }
+}
+
+// Variables
 var startButton = document.getElementById('start-btn')
 var nextButton = document.getElementById('next-btn')
 var questionContainerElement = document.getElementById('question-container')
@@ -12,6 +26,7 @@ nextButton.addEventListener("click", () => {
   setNextQuestion()
 })
 
+// Start gaming function. Hiding the "start" button and shuffling the questions.
 function startGame() {
   startButton.classList.add("hide")
   shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -40,7 +55,6 @@ function showQuestion(question) {
 }
 
 function resetState() {
-  clearStatusClass(document.body)
   nextButton.classList.add("hide")
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
@@ -71,11 +85,13 @@ function setStatusClass(element, correct) {
   }
 }
 
+
 function clearStatusClass(element) {
   element.classList.remove("correct")
   element.classList.remove("wrong")
 }
 
+// Quiz questions
 var questions = [
   {
     question: "Commonly used data types do NOT include:",

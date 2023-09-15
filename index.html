@@ -16,10 +16,10 @@
   <div class="menu" class="hide-menu">
       <ul>
         <li id="high-score"><a>View high scores</a></li>
-        <li id="time"><a>Time: 0</a></li>
+        <li id="time" class="main"><a>00:00</a></li>
       </ul>
     </div>
-    <div class="row">
+    <div id="div1" class="row">
       <h1 class="title">Coding Quiz Challenge</h1>
       <p class="description">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
     </div>
@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="controls">
-      <button id="start-btn" class="start-btn btn">Start</button>
+      <button onclick="toggle()" id="start-btn" class="start-btn btn">Start</button>
       <button id="next-btn" class="next-btn btn hide">Next</button>
     </div>
   </div>

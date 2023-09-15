@@ -1,6 +1,14 @@
 *, *::before, *::after {
   box-sizing: border-box;
-  font-family: Gotham Rounded;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+.title {
+  font-weight: 900;
 }
 
 :root {
@@ -9,33 +17,47 @@
   --hue-correct: 145;
 }
 
+.menu {
+  padding-bottom: 200px;
+}
+
+.row {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding-top: 300px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px 2px;
+}
+
+#high-score {
+  float: left;
+  list-style-type: none;
+  font-weight: 900;
+}
+
+#time {
+  float: right;
+  list-style-type: none;
+  font-weight: 900;
+}
+
 header {
-text-align: center;
+  padding: 20px;
 }
 
 body {
   --hue: var(--hue-neutral);
-  padding: 0;
-  margin: 0;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
   background-color: hsl(var(--hue), 100%, 20%);
 }
 
-body.correct {
-  --hue: var(--hue-correct);
-}
-
-body.wrong {
-  --hue: var(--hue-wrong);
-}
-
 .container {
-  width: 800px;
-  max-width: 80%;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding-top: 150px;
   background-color: white;
   border-radius: 5px;
   padding: 10px;
