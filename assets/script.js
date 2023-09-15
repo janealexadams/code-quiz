@@ -1,19 +1,19 @@
-const startButton = document.getElementById('start-btn')
-const nextButton = document.getElementById('next-btn')
-const questionContainerElement = document.getElementById('question-container')
-const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answer-buttons')
+var startButton = document.getElementById('start-btn')
+var nextButton = document.getElementById('next-btn')
+var questionContainerElement = document.getElementById('question-container')
+var questionElement = document.getElementById('question')
+var answerButtonsElement = document.getElementById('answer-buttons')
 
-let shuffledQuestions, currentQuestionIndex
+var shuffledQuestions, currentQuestionIndex
 
-startButton.addEventListener('click', startGame)
-nextButton.addEventListener('click', () => {
+startButton.addEventListener("click", startGame)
+nextButton.addEventListener("click", () => {
   currentQuestionIndex++
   setNextQuestion()
 })
 
 function startGame() {
-  startButton.classList.add('hide')
+  startButton.classList.add("hide")
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
   questionContainerElement.classList.remove('hide')
@@ -28,85 +28,98 @@ function setNextQuestion() {
 function showQuestion(question) {
   questionElement.innerText = question.question
   question.answers.forEach(answer => {
-    const button = document.createElement('button')
+    var button = document.createElement("button")
     button.innerText = answer.text
-    button.classList.add('btn')
+    button.classList.add("btn")
     if (answer.correct) {
       button.dataset.correct = answer.correct
     }
-    button.addEventListener('click', selectAnswer)
+    button.addEventListener("click", selectAnswer)
     answerButtonsElement.appendChild(button)
   })
 }
 
 function resetState() {
   clearStatusClass(document.body)
-  nextButton.classList.add('hide')
+  nextButton.classList.add("hide")
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
   }
 }
 
 function selectAnswer(e) {
-  const selectedButton = e.target
-  const correct = selectedButton.dataset.correct
+  var selectedButton = e.target
+  var correct = selectedButton.dataset.correct
   setStatusClass(document.body, correct)
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove('hide')
+    nextButton.classList.remove("hide")
   } else {
-    startButton.innerText = 'Restart'
-    startButton.classList.remove('hide')
+    startButton.innerText = "Restart"
+    startButton.classList.remove("hide")
   }
 }
 
 function setStatusClass(element, correct) {
   clearStatusClass(element)
   if (correct) {
-    element.classList.add('correct')
+    element.classList.add("correct")
   } else {
-    element.classList.add('wrong')
+    element.classList.add("wrong")
   }
 }
 
 function clearStatusClass(element) {
-  element.classList.remove('correct')
-  element.classList.remove('wrong')
+  element.classList.remove("correct")
+  element.classList.remove("wrong")
 }
 
-const questions = [
+var questions = [
   {
-    question: 'What is 2 + 2?',
+    question: "Commonly used data types do NOT include:",
     answers: [
-      { text: '4', correct: true },
-      { text: '22', correct: false }
+      { text: "strings", correct: false },
+      { text: "booleans", correct: false },
+      { text: "alerts", correct: true },
+      { text: "numbers", correct: false }
     ]
   },
   {
-    question: 'Who is the best YouTuber?',
+    question: "The condition in an if/else statement is enclosed with _____.",
     answers: [
-      { text: 'Web Dev Simplified', correct: true },
-      { text: 'Traversy Media', correct: true },
-      { text: 'Dev Ed', correct: true },
-      { text: 'Fun Fun Function', correct: true }
+      { text: "quotes", correct: false },
+      { text: "curly brackets", correct: false },
+      { text: "parenthesis", correct: true },
+      { text: "square brackets", correct: false }
     ]
   },
   {
-    question: 'Is web development fun?',
+    question: "Arrays in JavaScript can be used to store _____.",
     answers: [
-      { text: 'Kinda', correct: false },
-      { text: 'YES!!!', correct: true },
-      { text: 'Um no', correct: false },
-      { text: 'IDK', correct: false }
+      { text: "numbers and strings", correct: false },
+      { text: "other arrays", correct: false },
+      { text: "booleans", correct: false },
+      { text: "all of the above", correct: true }
     ]
   },
   {
-    question: 'What is 4 * 2?',
+    question: "String values must be enclosed within _____ when being assigned to variables.",
     answers: [
-      { text: '6', correct: false },
-      { text: '8', correct: true }
+      { text: "commas", correct: false },
+      { text: "curly brackets", correct: false },
+      { text: "quotes", correct: false },
+      { text: "parenthesis", correct: true }
+    ]
+  },
+  {
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answers: [
+      { text: "JavaScript", correct: false },
+      { text: "terminal/bash", correct: false },
+      { text: "for loops", correct: false },
+      { text: "console.log", correct: true }
     ]
   }
 ]

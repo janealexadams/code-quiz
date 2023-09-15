@@ -9,6 +9,10 @@
   --hue-correct: 145;
 }
 
+header {
+text-align: center;
+}
+
 body {
   --hue: var(--hue-neutral);
   padding: 0;
@@ -83,3 +87,6 @@ body.wrong {
 .hide {
   display: none;
 }
+
+
+
