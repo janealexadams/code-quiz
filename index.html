@@ -12,22 +12,22 @@
   <link rel="stylesheet" type="text/css" href="./assets/style.css">
 </head>
 
-<header>
-    <div class="menu">
-        <ul>
-          <li id="high-score"><a>View high scores</a></li>
-          <li id="time"><a>Time: 0</a></li>
-        </ul>
-      </div>
-</header>
-
 <body>
-    <div class="row">
-      <h1 class="title">Coding Quiz Challenge</h1>
-      <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-      <button id="start-quiz-button">Start Quiz</button>
+  <div class="container">
+    <div id="question-container" class="hide">
+      <div id="question">Question</div>
+      <div id="answer-buttons" class="btn-grid">
+        <button class="btn">Answer 1</button>
+        <button class="btn">Answer 2</button>
+        <button class="btn">Answer 3</button>
+        <button class="btn">Answer 4</button>
+      </div>
     </div>
-
-  <script src="./assets/js/script.js"></script>
+    <div class="controls">
+      <button id="start-btn" class="start-btn btn">Start</button>
+      <button id="next-btn" class="next-btn btn hide">Next</button>
+    </div>
+  </div>
+  <script src="/assets/script.js"></script>
 </body>
 </html>
