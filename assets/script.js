@@ -1,7 +1,37 @@
-// Function to make quiz description dissapear when clicking on "start" button.
-function toggle () {
-  var x = document.getElementById("div1");
+// Timer 
+var timerEl = document.getElementById('time');
+var mainEl = document.getElementById('.main');
+var timeLeft = 100;
 
+// Timer that counts down from 100
+function countdown() {
+
+  // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+  var timeInterval = setInterval(function () {
+    // As long as the `timeLeft` is greater than 1
+    if (timeLeft > 1) {
+      // Set the `textContent` of `timerEl` to show the remaining seconds
+      timerEl.textContent = timeLeft + ' seconds remaining';
+      // Decrement `timeLeft` by 1
+      timeLeft--;
+    } else if (timeLeft === 1) {
+      // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+      timerEl.textContent = timeLeft + ' second remaining';
+      timeLeft--;
+    } else {
+      // Once `timeLeft` gets to 0, set `timerEl` to an empty string
+      timerEl.textContent = '';
+      // Use `clearInterval()` to stop the timer
+      clearInterval(timeInterval);
+    }
+  }, 1000);
+
+}
+
+// Function to make quiz description dissapear when clicking on "start" button.
+function clickButton () {
+  var x = document.getElementById("div1");
+  countdown()
   if(x.style.display === "none") {
     x.style.display - "block";
   }

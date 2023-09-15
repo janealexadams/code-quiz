@@ -1,5 +1,6 @@
-*, *::before, *::after {
-  box-sizing: border-box;
+
+* { 
+  box-sizing: border-box; 
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 24px;
@@ -36,12 +37,14 @@
   float: left;
   list-style-type: none;
   font-weight: 900;
+  color: white;
 }
 
 #time {
   float: right;
   list-style-type: none;
   font-weight: 900;
+  color: white;
 }
 
 header {
@@ -95,7 +98,6 @@ body {
 }
 
 .start-btn, .next-btn {
-  font-size: 1.5rem;
   font-weight: bold;
   padding: 10px 20px;
 }
