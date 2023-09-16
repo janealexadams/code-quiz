@@ -48,15 +48,16 @@ var questionContainerElement = document.getElementById('question-container')
 var questionElement = document.getElementById('question')
 var answerButtonsElement = document.getElementById('answer-buttons')
 
-var shuffledQuestions, currentQuestionIndex
+var shuffledQuestions, currentQuestionInde
 
+// Starting the game when the "start" button is clicked.
 startButton.addEventListener("click", startGame)
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++
   setNextQuestion()
 })
 
-// Start gaming function. Hiding the "start" button and shuffling the questions.
+// Start game function. Hiding the "start" button and shuffling the questions.
 function startGame() {
   startButton.classList.add("hide")
   shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -65,11 +66,13 @@ function startGame() {
   setNextQuestion()
 }
 
+// Function for bringing up the next question.
 function setNextQuestion() {
   resetState()
   showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
+// Show current question and looping through answers.
 function showQuestion(question) {
   questionElement.innerText = question.question
   question.answers.forEach(answer => {
@@ -84,6 +87,7 @@ function showQuestion(question) {
   })
 }
 
+// Reset everything on our form back to it's default state everytime we set a new question.
 function resetState() {
   nextButton.classList.add("hide")
   while (answerButtonsElement.firstChild) {
@@ -91,8 +95,9 @@ function resetState() {
   }
 }
 
+// Function for selecting the answer. 
 function selectAnswer(e) {
-  var selectedButton = e.target
+  var selectedButton = e.target // Whatever is clicked on.
   var correct = selectedButton.dataset.correct
   setStatusClass(document.body, correct)
   Array.from(answerButtonsElement.children).forEach(button => {
@@ -105,6 +110,7 @@ function selectAnswer(e) {
     startButton.classList.remove("hide")
   }
 }
+
 
 function setStatusClass(element, correct) {
   clearStatusClass(element)

@@ -14,8 +14,6 @@
 
 :root {
   --hue-neutral: 200;
-  --hue-wrong: 0;
-  --hue-correct: 145;
 }
 
 .menu {
@@ -52,8 +50,7 @@ header {
 }
 
 body {
-  --hue: var(--hue-neutral);
-  background-color: hsl(var(--hue), 100%, 20%);
+  background-color: rgb(36, 73, 140)
 }
 
 .container {
@@ -89,12 +86,8 @@ body {
 }
 
 .btn.correct {
-  --hue: var(--hue-correct);
+  background-color: rgb(42, 136, 55);
   color: black;
-}
-
-.btn.wrong {
-  --hue: var(--hue-wrong);
 }
 
 .start-btn, .next-btn {
