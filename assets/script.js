@@ -5,7 +5,6 @@ var timeLeft = 100;
 
 // Timer that counts down from 100
 function countdown() {
-
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
   var timeInterval = setInterval(function () {
     // As long as the `timeLeft` is greater than 1
@@ -23,9 +22,9 @@ function countdown() {
       timerEl.textContent = '';
       // Use `clearInterval()` to stop the timer
       clearInterval(timeInterval);
+      document.body.innerHTML = "You ran out of time";
     }
   }, 1000);
-
 }
 
 // Function to make quiz description dissapear when clicking on "start" button.
@@ -40,6 +39,27 @@ function clickButton () {
     x.style.display = "none";
   }
 }
+
+
+// // WORKING ON Function to make scoreboard appear at the end of the quiz. Hiding the "restart" button. 
+// Start game function. Hiding the "start" button and shuffling the questions.
+function scoreBoardAppear() {
+  startButton.classList.add("hide")
+  questionContainerElement.classList.add('hide')
+}
+  
+//   // Stores user response (score) in variable
+//   var usersScore = 
+
+
+//   // Creates h2 element based on user's score.
+//   var score = document.createElement("h2");
+//   // Adds score text content to created tag
+//   h2.textContent = "Your final score is  " + tagName + ".";
+//   // Appends h2 as child of document body
+//   document.body.appendChild(h2);
+// }
+
 
 // Variables
 var startButton = document.getElementById('start-btn')
@@ -95,6 +115,7 @@ function resetState() {
   }
 }
 
+
 // Function for selecting the answer. 
 function selectAnswer(e) {
   var selectedButton = e.target // Whatever is clicked on.
@@ -105,11 +126,25 @@ function selectAnswer(e) {
   })
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove("hide")
-  } else {
-    startButton.innerText = "Restart"
+  } else { // need to make this stop the timer, and bring up the scoreboard
     startButton.classList.remove("hide")
+    startButton.innerText = 'View score'
+    document.body.innerHTML = "Your score is";
   }
+
+  // LOCAL STORAGE
+  var count = localStorage.getItem("count");
+  var counter = document.querySelector("#high-score");
+  correct.addEventListener("click", function(event) {
+    event.preventDefault();
+    if (count < 100) {
+      count++;
+      counter.textContent = count;
+      localStorage.setItem("count", count);
+    }
+  });
 }
+ 
 
 
 function setStatusClass(element, correct) {
