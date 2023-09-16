@@ -135,6 +135,7 @@ function selectAnswer(e) {
   // LOCAL STORAGE
   var count = localStorage.getItem("count");
   var counter = document.querySelector("#high-score");
+  counter.textContent = count;
   correct.addEventListener("click", function(event) {
     event.preventDefault();
     if (count < 100) {
