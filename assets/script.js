@@ -1,9 +1,9 @@
 // Timer 
 var timerEl = document.getElementById('time');
 var mainEl = document.getElementById('.main');
-var timeLeft = 100;
+var timeLeft = 60;
 
-// Timer that counts down from 100
+// Timer that counts down from 60
 function countdown() {
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
   var timeInterval = setInterval(function () {
@@ -19,10 +19,9 @@ function countdown() {
       timeLeft--;
     } else {
       // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-      timerEl.textContent = '';
+      timerEl.textContent = 'You ran out of time';
       // Use `clearInterval()` to stop the timer
       clearInterval(timeInterval);
-      document.body.innerHTML = "You ran out of time";
     }
   }, 1000);
 }
@@ -135,7 +134,7 @@ function selectAnswer(e) {
   // LOCAL STORAGE
   var count = localStorage.getItem("count");
   var counter = document.querySelector("#high-score");
-  counter.textContent = count;
+  counter.textContent = 'Your score: ' + count;
   correct.addEventListener("click", function(event) {
     event.preventDefault();
     if (count < 100) {
@@ -146,8 +145,6 @@ function selectAnswer(e) {
   });
 }
  
-
-
 function setStatusClass(element, correct) {
   clearStatusClass(element)
   if (correct) {
@@ -197,8 +194,8 @@ var questions = [
     answers: [
       { text: "commas", correct: false },
       { text: "curly brackets", correct: false },
-      { text: "quotes", correct: false },
-      { text: "parenthesis", correct: true }
+      { text: "quotes", correct: true },
+      { text: "parenthesis", correct: false }
     ]
   },
   {

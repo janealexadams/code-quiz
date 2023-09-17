@@ -12,10 +12,6 @@
   font-weight: 900;
 }
 
-:root {
-  --hue-neutral: 200;
-}
-
 .menu {
   padding-bottom: 200px;
 }
@@ -72,9 +68,7 @@ body {
 }
 
 .btn {
-  --hue: var(--hue-neutral);
-  border: 1px solid hsl(var(--hue), 100%, 30%);
-  background-color: hsl(var(--hue), 100%, 50%);
+  background-color: black;
   border-radius: 5px;
   padding: 5px 10px;
   color: white;
