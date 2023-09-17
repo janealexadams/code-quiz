@@ -1,7 +1,15 @@
-// Timer
+// Variables
 var timerEl = document.getElementById('time');
 var mainEl = document.getElementById('.main');
 var timeLeft = 100;
+var startButton = document.getElementById('start-btn')
+var nextButton = document.getElementById('next-btn')
+var questionContainerElement = document.getElementById('question-container')
+var questionElement = document.getElementById('question')
+var answerButtonsElement = document.getElementById('answer-buttons')
+var scoreboardElement = document.getElementById('score-board')
+var timeKeeper = document.getElementById('score-board')
+var shuffledQuestions, currentQuestionInde
 
 // Timer that counts down from 100
 function countdown() {
@@ -20,6 +28,12 @@ function countdown() {
     } else {
       // Once timeLeft gets to 0, set timerEl to an empty string
       timerEl.textContent = '';
+      startButton.classList.add("hide")
+      scoreboardElement.classList.remove("hide")
+      scoreboardElement.textContent = "Your score is " + timeLeft;
+      questionContainerElement.classList.add('hide')
+      console.log(timeLeft);
+      storeScores();
       // Use clearInterval() to stop the timer
       clearInterval(timeInterval);
       console.log(timeLeft);
@@ -27,6 +41,7 @@ function countdown() {
     }
   }, 1000);
 }
+
 // Function to make quiz description dissapear when clicking on "start" button.
 function clickButton () {
   var x = document.getElementById("div1");
@@ -43,15 +58,8 @@ function clickButton () {
 function scoreBoardAppear() {
   startButton.classList.add("hide")
   questionContainerElement.classList.add('hide')
+  scoreboardElement.classList.add('hide')
 }
-
-// Variables
-var startButton = document.getElementById('start-btn')
-var nextButton = document.getElementById('next-btn')
-var questionContainerElement = document.getElementById('question-container')
-var questionElement = document.getElementById('question')
-var answerButtonsElement = document.getElementById('answer-buttons')
-var shuffledQuestions, currentQuestionInde
 
 // Starting the game when the "start" button is clicked.
 startButton.addEventListener("click", startGame)
@@ -59,6 +67,7 @@ nextButton.addEventListener("click", () => {
   currentQuestionIndex++
   setNextQuestion()
 })
+
 // Start game function. Hiding the "start" button and shuffling the questions.
 function startGame() {
   startButton.classList.add("hide")
@@ -67,13 +76,15 @@ function startGame() {
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
 }
+
 // Function for bringing up the next question.
 function setNextQuestion() {
-  resetState()
-  showQuestion(shuffledQuestions[currentQuestionIndex])
+  clearState()
+  visQuestion(shuffledQuestions[currentQuestionIndex])
 }
+
 // Show current question and looping through answers.
-function showQuestion(question) {
+function visQuestion(question) {
   questionElement.innerText = question.question
   question.answers.forEach(answer => {
     var button = document.createElement("button")
@@ -86,28 +97,34 @@ function showQuestion(question) {
     answerButtonsElement.appendChild(button)
   })
 }
+
 // Reset everything on our form back to it's default state everytime we set a new question.
-function resetState() {
+function clearState() {
   nextButton.classList.add("hide")
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
   }
 }
+
 // Function for selecting the answer.
 function selectAnswer(e) {
   var selectedButton = e.target // Whatever is clicked on.
   var correct = selectedButton.dataset.correct
 
 setStatusClass(document.body, correct)
+  if(!correct){
+    timeLeft -= 10;
+  }
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove("hide")
   } else { 
-    startButton.classList.remove("hide")
-    startButton.innerText = 'View score'
-    document.body.innerHTML = "Your score is " + timeLeft;
+    startButton.classList.add("hide")
+    scoreboardElement.classList.remove("hide")
+    scoreboardElement.textContent = "Your score is " + timeLeft;
+    questionContainerElement.classList.add('hide')
     console.log(timeLeft);
     storeScores();
   }
@@ -118,17 +135,16 @@ function storeScores() {
   var remainingTime = timeLeft;
   localStorage.setItem("score", remainingTime)
 }
+
 function setStatusClass(element, correct) {
   clearStatusClass(element)
   if (correct) {
     element.classList.add("correct")
   } else {
     element.classList.add("wrong")
-    var tenSeconds = 10;
-    timeLeft = timeLeft - tenSeconds;
-    timerEl.textContent = (timeLeft - tenSeconds);
-  }
 }
+}
+
 function clearStatusClass(element) {
   element.classList.remove("correct")
   element.classList.remove("wrong")
