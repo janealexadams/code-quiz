@@ -22,7 +22,8 @@ function countdown() {
       timerEl.textContent = '';
       // Use clearInterval() to stop the timer
       clearInterval(timeInterval);
-      document.body.innerHTML = "You ran out of time";
+      console.log(timeLeft);
+      document.body.innerHTML = "Your score is " + timeLeft;
     }
   }, 1000);
 }
@@ -37,21 +38,13 @@ function clickButton () {
     x.style.display = "none";
   }
 }
-// // WORKING ON Function to make scoreboard appear at the end of the quiz. Hiding the "restart" button.
+
 // Start game function. Hiding the "start" button and shuffling the questions.
 function scoreBoardAppear() {
   startButton.classList.add("hide")
   questionContainerElement.classList.add('hide')
 }
-//   // Stores user response (score) in variable
-//   var usersScore =
-//   // Creates h2 element based on user's score.
-//   var score = document.createElement("h2");
-//   // Adds score text content to created tag
-//   h2.textContent = "Your final score is  " + tagName + ".";
-//   // Appends h2 as child of document body
-//   document.body.appendChild(h2);
-// }
+
 // Variables
 var startButton = document.getElementById('start-btn')
 var nextButton = document.getElementById('next-btn')
@@ -59,6 +52,7 @@ var questionContainerElement = document.getElementById('question-container')
 var questionElement = document.getElementById('question')
 var answerButtonsElement = document.getElementById('answer-buttons')
 var shuffledQuestions, currentQuestionInde
+
 // Starting the game when the "start" button is clicked.
 startButton.addEventListener("click", startGame)
 nextButton.addEventListener("click", () => {
@@ -110,26 +104,16 @@ setStatusClass(document.body, correct)
   })
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove("hide")
-  } else { // need to make this stop the timer, and bring up the scoreboard
+  } else { 
     startButton.classList.remove("hide")
     startButton.innerText = 'View score'
-    document.body.innerHTML = "Your score is";
+    document.body.innerHTML = "Your score is " + timeLeft;
     console.log(timeLeft);
     storeScores();
   }
-  // LOCAL STORAGE
-  // var count = localStorage.getItem("count");
-  // var counter = document.querySelector("#high-score");
-  // counter.textContent = count;
-  // correct.addEventListener("click", function(event) {
-  //   event.preventDefault();
-  //   if (count < 100) {
-  //     count++;
-  //     counter.textContent = count;
-  //     localStorage.setItem("count", count);
-  //   }
-  // });
 }
+
+// Local storage
 function storeScores() {
   var remainingTime = timeLeft;
   localStorage.setItem("score", remainingTime)
@@ -140,12 +124,15 @@ function setStatusClass(element, correct) {
     element.classList.add("correct")
   } else {
     element.classList.add("wrong")
+    var tenSeconds = 10
+    timerEl.textContent = (timeLeft - tenSeconds) 
   }
 }
 function clearStatusClass(element) {
   element.classList.remove("correct")
   element.classList.remove("wrong")
 }
+
 // Quiz questions
 var questions = [
   {
