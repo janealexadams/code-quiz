@@ -124,8 +124,9 @@ function setStatusClass(element, correct) {
     element.classList.add("correct")
   } else {
     element.classList.add("wrong")
-    var tenSeconds = 10
-    timerEl.textContent = (timeLeft - tenSeconds) 
+    var tenSeconds = 10;
+    timeLeft = timeLeft - tenSeconds;
+    timerEl.textContent = (timeLeft - tenSeconds);
   }
 }
 function clearStatusClass(element) {
