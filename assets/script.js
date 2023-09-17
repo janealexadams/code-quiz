@@ -3,7 +3,7 @@ var timerEl = document.getElementById('time');
 var mainEl = document.getElementById('.main');
 var timeLeft = 100;
 
-// Timer that counts down from 60
+// Timer that counts down from 100
 function countdown() {
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
   var timeInterval = setInterval(function () {
@@ -25,19 +25,6 @@ function countdown() {
     }
   }, 1000);
 }
-
-// LOCAL STORAGE
-var count = localStorage.getItem("count");
-var counter = document.querySelector("#high-score");
-counter.textContent = 'Your score: ' + count;
-correct.addEventListener("click", function(event) {
-  event.preventDefault();
-  if (count < 100) {
-    count++;
-    counter.textContent = count;
-    localStorage.setItem("count", count);
-  }
-});
 
 // Function to make quiz description dissapear when clicking on "start" button.
 function clickButton () {
@@ -143,6 +130,7 @@ function selectAnswer(e) {
     startButton.innerText = 'View score'
     document.body.innerHTML = "Your score is";
   }
+
 }
  
 function setStatusClass(element, correct) {
