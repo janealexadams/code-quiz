@@ -1,31 +1,31 @@
-// Timer 
+// Timer
 var timerEl = document.getElementById('time');
 var mainEl = document.getElementById('.main');
 var timeLeft = 100;
 
 // Timer that counts down from 100
 function countdown() {
-  // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+  // Use the setInterval() method to call a function to be executed every 1000 milliseconds
   var timeInterval = setInterval(function () {
-    // As long as the `timeLeft` is greater than 1
+    // As long as the timeLeft is greater than 1
     if (timeLeft > 1) {
-      // Set the `textContent` of `timerEl` to show the remaining seconds
+      // Set the textContent of timerEl to show the remaining seconds
       timerEl.textContent = timeLeft + ' seconds remaining';
-      // Decrement `timeLeft` by 1
+      // Decrement timeLeft by 1
       timeLeft--;
     } else if (timeLeft === 1) {
-      // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+      // When timeLeft is equal to 1, rename to 'second' instead of 'seconds'
       timerEl.textContent = timeLeft + ' second remaining';
       timeLeft--;
     } else {
-      // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-      timerEl.textContent = 'You ran out of time';
-      // Use `clearInterval()` to stop the timer
+      // Once timeLeft gets to 0, set timerEl to an empty string
+      timerEl.textContent = '';
+      // Use clearInterval() to stop the timer
       clearInterval(timeInterval);
+      document.body.innerHTML = "You ran out of time";
     }
   }, 1000);
 }
-
 // Function to make quiz description dissapear when clicking on "start" button.
 function clickButton () {
   var x = document.getElementById("div1");
@@ -33,24 +33,18 @@ function clickButton () {
   if(x.style.display === "none") {
     x.style.display - "block";
   }
-
   else {
     x.style.display = "none";
   }
 }
-
-
-// // WORKING ON Function to make scoreboard appear at the end of the quiz. Hiding the "restart" button. 
+// // WORKING ON Function to make scoreboard appear at the end of the quiz. Hiding the "restart" button.
 // Start game function. Hiding the "start" button and shuffling the questions.
 function scoreBoardAppear() {
   startButton.classList.add("hide")
   questionContainerElement.classList.add('hide')
 }
-  
 //   // Stores user response (score) in variable
-//   var usersScore = 
-
-
+//   var usersScore =
 //   // Creates h2 element based on user's score.
 //   var score = document.createElement("h2");
 //   // Adds score text content to created tag
@@ -58,24 +52,19 @@ function scoreBoardAppear() {
 //   // Appends h2 as child of document body
 //   document.body.appendChild(h2);
 // }
-
-
 // Variables
 var startButton = document.getElementById('start-btn')
 var nextButton = document.getElementById('next-btn')
 var questionContainerElement = document.getElementById('question-container')
 var questionElement = document.getElementById('question')
 var answerButtonsElement = document.getElementById('answer-buttons')
-
 var shuffledQuestions, currentQuestionInde
-
 // Starting the game when the "start" button is clicked.
 startButton.addEventListener("click", startGame)
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++
   setNextQuestion()
 })
-
 // Start game function. Hiding the "start" button and shuffling the questions.
 function startGame() {
   startButton.classList.add("hide")
@@ -84,13 +73,11 @@ function startGame() {
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
 }
-
 // Function for bringing up the next question.
 function setNextQuestion() {
   resetState()
   showQuestion(shuffledQuestions[currentQuestionIndex])
 }
-
 // Show current question and looping through answers.
 function showQuestion(question) {
   questionElement.innerText = question.question
@@ -105,7 +92,6 @@ function showQuestion(question) {
     answerButtonsElement.appendChild(button)
   })
 }
-
 // Reset everything on our form back to it's default state everytime we set a new question.
 function resetState() {
   nextButton.classList.add("hide")
@@ -113,13 +99,12 @@ function resetState() {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
   }
 }
-
-
-// Function for selecting the answer. 
+// Function for selecting the answer.
 function selectAnswer(e) {
   var selectedButton = e.target // Whatever is clicked on.
   var correct = selectedButton.dataset.correct
-  setStatusClass(document.body, correct)
+
+setStatusClass(document.body, correct)
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
@@ -129,10 +114,26 @@ function selectAnswer(e) {
     startButton.classList.remove("hide")
     startButton.innerText = 'View score'
     document.body.innerHTML = "Your score is";
+    console.log(timeLeft);
+    storeScores();
   }
-
+  // LOCAL STORAGE
+  // var count = localStorage.getItem("count");
+  // var counter = document.querySelector("#high-score");
+  // counter.textContent = count;
+  // correct.addEventListener("click", function(event) {
+  //   event.preventDefault();
+  //   if (count < 100) {
+  //     count++;
+  //     counter.textContent = count;
+  //     localStorage.setItem("count", count);
+  //   }
+  // });
 }
- 
+function storeScores() {
+  var remainingTime = timeLeft;
+  localStorage.setItem("score", remainingTime)
+}
 function setStatusClass(element, correct) {
   clearStatusClass(element)
   if (correct) {
@@ -141,13 +142,10 @@ function setStatusClass(element, correct) {
     element.classList.add("wrong")
   }
 }
-
-
 function clearStatusClass(element) {
   element.classList.remove("correct")
   element.classList.remove("wrong")
 }
-
 // Quiz questions
 var questions = [
   {
@@ -182,8 +180,8 @@ var questions = [
     answers: [
       { text: "commas", correct: false },
       { text: "curly brackets", correct: false },
-      { text: "quotes", correct: true },
-      { text: "parenthesis", correct: false }
+      { text: "quotes", correct: false },
+      { text: "parenthesis", correct: true }
     ]
   },
   {
