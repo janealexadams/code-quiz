@@ -8,6 +8,14 @@
   margin: 0;
 }
 
+header {
+  padding: 20px;
+}
+
+body {
+  background-color: rgb(36, 73, 140)
+}
+
 .title {
   font-weight: 900;
 }
@@ -16,7 +24,32 @@
   padding-bottom: 200px;
 }
 
+#previous-scores {
+  font-weight: 900;
+}
+
+.description {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .row {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding-top: 300px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px 2px;
+}
+
+#score-container {
   text-align: center;
   margin: auto;
   width: 50%;
@@ -41,23 +74,36 @@
   color: white;
 }
 
-header {
-  padding: 20px;
-}
-
-body {
-  background-color: rgb(36, 73, 140)
-}
-
 .container {
   text-align: center;
   margin: auto;
-  width: 50%;
+  width: 70%;
   padding-top: 150px;
-  background-color: white;
   border-radius: 5px;
   padding: 10px;
+  background-color: white;
   box-shadow: 0 0 10px 2px;
+}
+
+#answer-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.submit-score, .form, .retake {
+  margin-top: 15px;
+  font-weight: bold;
+  margin-right: 2px;
+}
+
+.retake {
+  margin-left: 2px;
+}
+
+.retake-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-grid {
@@ -73,10 +119,12 @@ body {
   padding: 5px 10px;
   color: white;
   outline: none;
+  cursor: pointer;
+  border-color: transparent;
 }
 
 .btn:hover {
-  border-color: black;
+  font-weight: bold;
 }
 
 .btn.correct {
@@ -84,9 +132,19 @@ body {
   color: black;
 }
 
-.start-btn, .next-btn {
+.start-btn, .next-btn, #high-score {
   font-weight: bold;
-  padding: 10px 20px;
+  padding: 10px 10px;
+  cursor: pointer;
+  border-color: transparent;
+}
+
+.start-btn {
+  margin-top: 10px;
+}
+
+.start-btn:hover, .submit-score:hover, .next-btn:hover, #high-score:hover, #reload:hover, #retake:hover {
+  transform: scale(1.1);
 }
 
 .controls {

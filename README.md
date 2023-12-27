@@ -1,20 +1,35 @@
-# code-quiz
+# Code Quiz
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 
-This website is a coding quiz.
 
-The code meets the below Acceptance Criteria:
-* GIVEN I am taking a code quiz, WHEN I click the start button, THEN a timer starts and I am presented with a question
-* WHEN I answer a question THEN I am presented with another question
-* WHEN I answer a question incorrectly THEN time is subtracted from the clock
-* WHEN all questions are answered or the timer reaches 0 THEN the game is over
-* WHEN the game is over THEN I can save my initials and score
+## Contents
+- [Usage](#usage)
+- [Built With](#built-with)
+- [Deployment](#deployment)
+- [Questions](#questions)
+- [Credits](#credits)
 
 ## Usage
+To use this application, clone the repository to your local machine:
+```
+git clone https://github.com/janealexadams/code-quiz.git
+```
 
-Deployed website is here: https://janealexadams.github.io/code-quiz/
+## Built With
+- JavaScript
+- Local Storage
+- CSS 
+- HTML
 
-Website screenshot below. 
-![Password Generator](assets/images/code-quiz-screenshot.png)
+## Questions
+If you have any questions about the repo, please contact me via email at janealexadams@gmail.com. You can find more of my work on my GitHub, [janealexadams](https://github.com/janealexadams).
 
+## Credits
+Created by Jane Adams.
+
+## Deployment
+https://janealexadams.github.io/code-quiz/
+![Code Quiz](assets/images/code-quiz-screenshot.png)

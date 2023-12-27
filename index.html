@@ -12,21 +12,23 @@
   <link rel="stylesheet" type="text/css" href="./assets/style.css">
 </head>
 
-<header>
-  <div class="menu" class="hide-menu">
-      <ul>
-        <li id="high-score"><a>View high scores</a></li>
-        <li id="time" class="main"><a>100 seconds remaining</a></li>
-      </ul>
-    </div>
-    <div id="div1" class="row">
-      <h1 class="title">Coding Quiz Challenge</h1>
-      <p class="description">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-    </div>
-</header>
-
 <body>
-  <div class="container">
+  <header>
+    <div class="menu" class="hide-menu">
+        <ul>
+          <button class="btn" id="high-score">Previous Score</button>
+          <li id="time" class="main"><a>100 Seconds Remaining</a></li>
+        </ul>
+      </div>
+      <div id="div1" class="row">
+        <h1 class="title">Coding Quiz Challenge</h1>
+        <p class="description">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+      </div>
+      <div class="controls">
+        <button onclick="clickButton()" id="start-btn" class="start-btn btn">Start</button>
+      </div>
+  </header>
+  <div id="container" class="container hide">
     <div id="question-container" class="hide">
       <div id="question">Question</div>
       <div id="answer-buttons" class="btn-grid">
@@ -37,13 +39,33 @@
       </div>
     </div>
     <div id="div2" class="row2">
-      <h1 id="score-board" class="hide">Score Board</h1>
+      <h2 id="score-board" class="hide">Score Board</h2>
+      <div id="initials" class="mb-3 initials hide">
+        <form id="search-form">
+          <div class="form">
+            <label for="exampleFormControlInput1" class="form-label">Enter your initials:</label>
+            <input type="text" class="form-control" id="initial-form">
+          </div>
+        </form>
+        <div class="col-auto">
+          <button type="submit" id="submit" class="btn submit-score btn-primary mb-3">Submit</button>
+          <button type="submit" id="retake" class="btn retake btn-primary mb-3">Retake Quiz</button>
+        </div>
+      </div>
     </div>
     <div class="controls">
-      <button onclick="clickButton()" id="start-btn" class="start-btn btn">Start</button>
       <button id="next-btn" class="next-btn btn hide">Next</button>
     </div>
   </div>
+  <div id="score-container" class="hide">
+    <h3 id="previous-scores" class="hide">Previous Score:</h3> 
+    <p class="message"></p>
+  </div>
+  <h4 class="out-of-time"></h4>
+  <div class="controls">
+    <button type="submit" id="reload" class="hide btn retake retake-quiz btn-primary mb-3">Retake Quiz</button>
+  </div>
+
   <script src="./assets/script.js"></script>
 </body>
 </html>
