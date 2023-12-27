@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-
+This application is a timed coding assessment with multiple-choice questions. This app runs in the browser, and will features dynamically updated HTML and CSS powered by JavaScript code. When a user answers a questions incorrectly, 10 seconds is taken away from the timer. After the user completes the quiz, they're prompted to enter in their initials, and their score is saved using local storage.
 
 ## Contents
 - [Usage](#usage)
@@ -32,4 +32,4 @@ Created by Jane Adams.
 
 ## Deployment
 https://janealexadams.github.io/code-quiz/
-![Code Quiz](assets/images/code-quiz-screenshot.png)
+![Code Quiz](assets/images/code-quiz-gif.gif)
